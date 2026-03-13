@@ -1,2 +1,2 @@
 # ReuniSUS
-Aplacativo Gerador de Ata de reunião
+Aplicativo Gerador de Ata de reunião
