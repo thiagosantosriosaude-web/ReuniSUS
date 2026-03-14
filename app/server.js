@@ -1,19 +1,30 @@
-{
-  "name": "reunisus",
-  "version": "1.0.0",
-  "description": "Sistema de governança executável para reuniões",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "pg": "^8.11.3",
-    "uuid": "^9.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.2"
-  }
-}
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+
+const meetingRoutes = require('./api/meetings');
+const atasRoutes = require('./api/atas');
+const dashboardRoutes = require('./api/dashboard');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok' });
+});
+
+app.use('/api/meetings', meetingRoutes);
+app.use('/api/atas', atasRoutes);
+app.use('/api/dashboard', dashboardRoutes);
+
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`ReuniSUS running on port ${PORT}`);
+});
