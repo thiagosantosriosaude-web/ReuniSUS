@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReuniSUS - Decision Execution Platform</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>ReuniSUS</h1>
+        <p>discussion → decision → responsibility → execution</p>
+      </header>
+
+      <section id="metrics"></section>
+
+      <section class="flow-panel">
+        <div class="flow-head">
+          <h2>Meeting Conduction Mode</h2>
+          <button id="startMeetingBtn">Start Meeting</button>
+        </div>
+        <div id="meetingFlow"></div>
+      </section>
+
+      <section>
+        <h2>Cadeia de Decisão</h2>
+        <div id="decisionBlocks"></div>
+      </section>
+
+      <section>
+        <h2>Meeting Timeline</h2>
+        <div id="timeline"></div>
+      </section>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
